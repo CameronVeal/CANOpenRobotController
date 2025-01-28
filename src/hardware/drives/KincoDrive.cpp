@@ -16,16 +16,16 @@ KincoDrive::KincoDrive(int NodeID, bool with_DIO_config) : Drive::Drive(NodeID) 
     }
     //Remove any DIO configuration
     else {
-	spdlog::debug("Kinco Drive without DIO configuration.");
-        TPDO_MappedObjects.erase (4);
-        RPDO_MappedObjects.erase (1);
-        RPDO_MappedObjects.insert(std::pair<UNSIGNED8, std::vector<OD_Entry_t>>(1,{CONTROL_WORD}) );
-        OD_Addresses.erase(DIGITAL_IN);
-        OD_Addresses.erase(DIGITAL_OUT);
-        OD_MappedObjectAddresses.erase(DIGITAL_IN);
-        OD_MappedObjectAddresses.erase(DIGITAL_OUT);
-        //OD_Addresses[DIGITAL_IN] = {0x60FD, 0x00}; //Use default. 0x2010, 0x0B not working (SDO setup error)
-        //OD_Addresses[DIGITAL_OUT] = {0x2010, 0x0E};
+	// spdlog::debug("Kinco Drive without DIO configuration.");
+    //     TPDO_MappedObjects.erase (4);
+    //     RPDO_MappedObjects.erase (1);
+    //     RPDO_MappedObjects.insert(std::pair<UNSIGNED8, std::vector<OD_Entry_t>>(1,{CONTROL_WORD}) );
+    //     OD_Addresses.erase(DIGITAL_IN);
+    //     OD_Addresses.erase(DIGITAL_OUT);
+    //     OD_MappedObjectAddresses.erase(DIGITAL_IN);
+    //     OD_MappedObjectAddresses.erase(DIGITAL_OUT);
+        OD_Addresses[DIGITAL_IN] = {0x60FD, 0x00}; //Use default. 0x2010, 0x0B not working (SDO setup error)
+        OD_Addresses[DIGITAL_OUT] = {0x2010, 0x0E};
     }
 }
 
